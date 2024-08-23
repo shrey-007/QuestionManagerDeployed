@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="userBasePage::layout(~{::section})">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<section>
+<!--  <h1 th:text="${user.name}"></h1>-->
+<!--  <h1 th:text="${question.name}"></h1>-->
+
+  <div class="card-q">
+    <div class="card-left">
+      <!-- Problem name -->
+      <h3 th:text="${question.name}"></h3>
+
+      <!-- Problem Statement -->
+      <h6 th:text="${question.description}"></h6>
+
+
+
+
+        <br>
+        <br>
+
+        <!-- topics -->
+
+
+
+    </div>
+
+
+    <div class="card-right">
+
+      <button class="btn btn-primary button-custom" onclick="editNote()"><i class="fas fa-edit"></i></button>
+      <br>
+<!--      to edit the note-->
+<!--      /question/${question.qid}-->
+      <form th:action="@{/user/editNote}" style="display:none;background-color:black;padding:1%;width:98%;margin:auto;" id="editNoteForm">
+        <br>
+
+        <div class="form-group">
+          <label for="note" style="color:white;">Edit Note</label>
+          <textarea name="note" id="note" cols="40" rows="10" th:text="${questionExplaination.explaination}" style="width:99%;"></textarea>
+        </div>
+        <input type="hidden" th:value="${question.qid}" name="qqid">
+
+        <button class="btn btn-primary button-custom"  type="submit">Edit Note</button>
+
+      </form>
+<!--      to display note using pre tag , beacause jo explaination store kra hai usme line break and spaces bhi ho skti hai toh usko directly dispay krne pr vo gayab ho jaaegi toh pre tag ke under kra hai-->
+      <span><pre th:if="${questionExplaination.explaination != null}" th:text="${questionExplaination.explaination}" style="white-space: pre-wrap;" id="notes"></pre></span>
+      <br>
+      <br>
+<!--      <a style="cursor: pointer;"  class="btn btn-primary button-custom" th:href="@{'/target/classes/static/files'+question.fileName}">Code</a>-->
+      <a style="cursor: pointer;" class="btn btn-primary button-custom" th:href="@{'/files/' + ${question.fileName}}">Code</a>
+      <a style="cursor: pointer;" class="btn btn-primary button-custom" th:href="@{'/images/' + ${question.imageName}}">Image</a>
+
+<!--      th:href="@{'/files/' + ${file}}"-->
+
+    </div>
+
+  </div>
+
+</section>
+
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+ <section>
+     <script>document.body.style.backgroundColor = 'black';</script>
+     <div class="banner d-flex justify-content-center align-items-center">
+         <div class="text-center">
+             <h1>Questions Manager</h1>
+             <p>Create your Competitive Programming Questions notes with images, pdfs, and tags</p>
+             <button class="btn btn-primary button-custom" id="myButton">Sign up</button>
+
+         </div>
+     </div>
+
+     <br>
+     <br>
+
+     <div style="background:black;width:100%;height:100px;display:flex;align-items:center;">
+         <div class="typing-text" id="typing-text"></div>
+     </div>
+
+
+     <div class="container" style="position: relative;overflow: hidden;height:500px;">
+         <div class="left-element">Welcome to my competitive programming hub! Explore solved coding challenges, algorithms, data structures, and expert solutions. Enhance your skills with hints, notes, and code snippets. Track your progress, master coding interviews, and join our supportive community.</div>
+         <div class="right-element">Welcome to the heart of competitive programming brilliance! Embark on a journey of intellectual exploration. Empower yourself with tools to tackle coding challenges, master algorithms, and hone your problem-solving skills. Join our vibrant community, embrace challenges.</div>
+     </div>
+
+     <br>
+     <br>
+     <br>
+
+     <script>
+window.addEventListener('scroll', function() {
+  const container = document.querySelector('.container');
+  const containerRect = container.getBoundingClientRect();
+  const containerMiddle = containerRect.top + containerRect.height / 2; // Calculate middle of container
+  const viewportHeight = window.innerHeight;
+
+  if (containerMiddle <= viewportHeight) {
+    /* Container middle is visible on screen, trigger animations */
+    document.querySelector('.left-element').style.animation = 'slide-in 1s ease-in-out forwards';
+    document.querySelector('.right-element').style.animation = 'slide-out 1s ease-in-out forwards';
+    typeWriter();
+  }
+});
+
+
+const text = "Making notes of Competive Programming Questions is now easy";
+const typedTextElement = document.getElementById('typing-text');
+let i = 0;
+
+function typeWriter() {
+  if (i < text.length) {
+    typedTextElement.innerHTML += text.charAt(i);
+    console.log(text.charAt(i));
+    i++;
+    setTimeout(typeWriter, 200); // Adjust speed here (milliseconds)
+  }
+  if(i==text.length){typedTextElement.style.border='none';}
+}
+
+
+
+    </script>
+
+
+ </section>
+
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="userBasePage::layout(~{::section})">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<section>
+
+  <div class="card mr-3 ml-3" style="background-color:black;">
+    <div class="card-body">
+      <h1 class="text-center" style="color:white;">Add Question</h1>
+      <div class="container-fluid mt-1">
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <form action="" th:object="${question}" enctype="multipart/form-data" method="post" th:action="@{/user/saveQuestion}" class="mt-2">
+
+
+<!--              name-->
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fa fa-plus"></i>
+                  </div>
+                </div>
+                <input type="text" id="name" name="name" placeholder="Enter Name Here" class="form-control" required/>
+              </div>
+
+<!--              description  -->
+                <div class="input-group mt-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fa fa-plus"></i>
+                        </div>
+                    </div>
+                    <input type="text" id="description" name="description" placeholder="Enter Description Here" class="form-control" required/>
+                </div>
+
+<!--               notes -->
+                <div class="form-group mt-3">
+                    <textarea name="notes"   cols="30" rows="7" class="form-control" placeholder="Add a note"></textarea>
+                </div>
+
+<!--                image-->
+                <div class="custom-file">
+                    <label for="imageName" style="color:white;">Upload Image</label>
+                    <input type="file" name="imageName" style="color:white;">
+                </div>
+                <!--                file-->
+                <div class="custom-file">
+                    <label for="fileName" style="color:white;">Upload File</label>
+                    <input type="file" name="fileName" style="color:white;">
+                </div>
+
+
+                <div th:if="${session.message}" th:classappend="${session.message.type}" class="alert" role="alert" style="background-color:grey;">
+                    <p class="text-center" th:text="${session.message.content}" style="color:black;"></p>
+                    <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+                </div>
+
+
+                <div class="container text-center">
+                    <button class="btn btn-primary button-custom">Save</button>
+                </div>
+
+<!--&lt;!&ndash;-->
+
+
+
+
+
+
+
+
+
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!--advance text editor-->
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+      tinymce.init({
+        selector: '#mytextarea'
+      });
+    </script>
+
+</section>
+
+
+</body>
+</html>

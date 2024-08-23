@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="userBasePage::layout(~{::section})">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<section>
+
+
+  <div class="card mr-3 ml-3" style="background-color:#221d1d;">
+    <div class="card-body">
+      <h1 class="text-center" style="color:white;">Your Questions</h1>
+      <!-- SEARCH BAR     -->
+      <div class="search-container my-4">
+        <!--isee input lenge ki kya search krna hai and voh backend pr bhejege and result search result mai bhejege        -->
+        <!--onleyup is an javascipt event, toh jaise hi user search bar mai kuch daalega toh search function call hoga      -->
+        <input onkeyup="search()" id="search-input" type="text" class="form-control" placeholder="Search your Question">
+        <div class="search-result">
+          <!--this is search result-->
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!--  TABLE START-->
+      <table class="table">
+        <thead>
+        <tr>
+<!--          <th scope="col" th:text style="color:white;">#</th>-->
+          <th scope="col" style="color:white;">Title</th>
+          <th scope="col" style="color:white;">Image</th>
+          <th scope="col" style="color:white;">Code</th>
+        </tr>
+        </thead>
+        <tbody>
+
+          <tr th:each="q : ${questions}">
+<!--            <td scope="row" style="color:white;">1</td>-->
+<!--            we are sending to next page via url rewriting quki dekho url mai qid add kri hai-->
+            <td style="width:60%;padding:2%;"><a th:href="@{'/user/question/'+${q.qid}}" style="text-decoration:none;color:white;" onmouseover="this.style.color='yellow';" onmouseout="this.style.color='white';" th:text="${q.name}" ></a></td>
+<!--            this row will only show code and show file if it is uploaded by user else no-->
+            <td style="width:10%;"><span th:if="${q.imageName != null}"><a th:href="@{'/images/'+${q.imageName}}">Show File</a></span></td>
+            <td style="width:10%;"><span th:if="${q.fileName != null}"><a th:href="@{'/files/'+${q.fileName}}">Show Code</a></span></td>
+          </tr>
+
+        </tbody>
+      </table>
+
+<!--      TABLE END-->
+
+
+      <!--  PAGINATION-->
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+<!--          <li class="page-item" th:if="${currentPage != 0}"><a class="page-link" href="#" th:href="@{'/showQuestions/'+${currentPage-1}}">Previous</a></li>-->
+          <li  th:each="i : ${#numbers.sequence(1,totalPages)}" class="page-item"><a th:classappend="${currentPage==i-1?'cus':''}" class="page-link" href="#" th:href="@{'/showQuestions/'+${i-1}}"><span th:text="${i}"></span></a></li>
+<!--          <li class="page-item" th:if="${currentPage+1 != totalPages}"><a class="page-link" href="#" th:href="@{'/showQuestions/'+${currentPage+1}}">Next</a></li>-->
+        </ul>
+      </nav>
+
+    </div>
+  </div>
+
+
+
+
+</section>
+
+
+</body>
+</html>

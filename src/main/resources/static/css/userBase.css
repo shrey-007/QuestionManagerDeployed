@@ -1,0 +1,140 @@
+/* SIDE BAR */
+@media only screen and (max-width:600px){
+   /* agar device ki width 600px se kam hui toh ye chalega*/
+  .sidebar{
+    display:none;
+    width:80% !important;
+    background-color:black;
+    height:100vh;
+    position:fixed;
+    padding-top:20px;
+  }
+  .content{
+    margin-left:0% !important;
+  }
+}
+
+.sidebar{
+  width:18%;
+  background-color:black;
+  height:100%;
+  position:fixed;
+  padding-top:45px;
+  z-index:999999999999999999999999999;
+}
+
+.sidebar a{
+   display:block;
+   width:100%;
+   padding:10px 25px;
+   text-decoration:none;
+   color:yellow;
+ }
+.sidebar a:hover{
+  background-color:yellow;
+  color:black;
+}
+.sidebar .divider{
+  height:0.5px;
+  width:100%
+  background:grey;
+  margin-top:10px;
+}
+
+/*SIDE BAR END*/
+
+/* CONTENT */
+.content{
+  margin-left:20%;
+}
+
+/* cross button of side bar*/
+.sidebar .crossBtn{
+ position:absolute;
+ top:0;
+ right:35px;
+ font-size:36px;
+ cursor:pointer;
+}
+
+/*pagination*/
+.pagination li a{
+  background-color: yellow;
+  color: black;
+  border-radius: 30%;
+  margin: 2%;
+ }
+ .pagination li a:hover{
+  background-color: black;
+  color: yellow;
+ }
+ .cus{
+  background-color: grey !important;
+   color: black !important;
+ }
+
+ /*search bar*/
+ .search-container{
+   position:relative;
+ }
+ .search-result{
+   position:absolute;
+   background:white;
+   width:100%;
+   padding:10px;
+   border:1px solid grey;
+   display:none;
+   color:black;
+ }
+ /*to display list of results in search bar*/
+ .customList{
+   background-color:yellow;
+   color:black;
+ }
+
+ /*for the single question*/
+  .card-q{
+      display: flex;
+      justify-content:space-around;
+      background-color: black;
+      padding: 1%;
+  }
+  .card-left{
+      width: 45%;
+      padding: 5%;
+      background-color: grey;
+  }
+  .card-right{
+      width: 45%;
+      padding: 5%;
+      background-color: grey;
+  }
+  /*for topics*/
+     .topics{
+         display: flex;
+         flex-wrap: wrap;
+     }
+     .topic{
+         margin: 0.7%;
+         background-color:yellow;
+         color:black;
+         border:2px solid black;
+         border-radius:25%;
+         padding:0.3%;
+     }
+
+     hr{
+     color:white;
+     background-color:white;
+     }
+
+     /*Table*/
+     .custom-link {
+         text-decoration: none;
+         color: white;
+     }
+
+     .custom-link:hover {
+         color: /* Your desired hover color */;
+         text-decoration: none; /* Removes underline on hover */
+     }

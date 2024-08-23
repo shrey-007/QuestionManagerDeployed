@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_container
+    environment:
+      MYSQL_DATABASE: QuestionManager2
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - springboot-network
+
+  mongo:
+    image: mongo:5.0
+    container_name: mongo_container
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - springboot-network
+
+  app:
+    image: tommy
+    container_name: springboot_app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+      - mongo
+    networks:
+      - springboot-network
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/QuestionManager2
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/QuestionManager2
+
+volumes:
+  mysql_data:
+  mongo_data:
+
+networks:
+  springboot-network:
+    driver: bridge

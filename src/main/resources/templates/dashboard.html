@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="userBasePage::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<section>
+
+
+    <div class="todo" style="background-color:#221d1d;color:white; width:70%;padding:2%;">
+        <h3>To do List</h3>
+        <hr>
+        <br>
+
+        <span th:text="${user.toDo}"style="color:white;"></span>
+
+        <br>
+        <br>
+        <button class="btn btn-primary button-custom"  onclick="toggleToDo()">New Task</button>
+        <br>
+        <br>
+        <br>
+
+        <form th:action="@{/user/toDo}" style="display:none;background-color:black;padding:1%;" id="toDoForm">
+            <br>
+
+            <div class="form-group">
+                <label for="toDo" style="color:white;">Task</label>
+                <input name="toDo" type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Here"  required>
+            </div>
+
+            <button class="btn btn-primary button-custom"  type="submit">Create Task</button>
+
+        </form>
+
+    </div>
+
+
+
+
+</section>
+
+
+</body>
+</html>
